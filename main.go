@@ -2,7 +2,7 @@
 * @Author: scottxiong
 * @Date:   2019-10-11 15:11:50
 * @Last Modified by:   scottxiong
-* @Last Modified time: 2019-10-11 17:56:12
+* @Last Modified time: 2019-10-12 17:32:33
  */
 package main
 
@@ -12,8 +12,20 @@ import (
 )
 
 func main() {
-	fmt.Println("hello world")
-	c := utils.GetContent("a.txt")
-	fmt.Println(utils.GetAllIndex(c, "wo"))
-	fmt.Println(utils.GetWord("hellO i love", 1))
+	conetent := utils.GetContent("temp.sql")
+	var arr [][]int = utils.GetAllMatchedPosition(conetent, "(")
+	for _, v := range arr {
+		var f, e int
+		for k, x := range v {
+			if k == 0 {
+				f = x
+			}
+			if k == 1 {
+				e = x
+			}
+
+		}
+		fmt.Printf("item=>%v\n", conetent[f:e+1])
+	}
+
 }
